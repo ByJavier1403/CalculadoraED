@@ -1,18 +1,30 @@
 package pila_01;
+
+import java.util.ArrayList;
+
 /**Tania Ariadna Dominguez Palma
  *27/02/2022
  * Clase que realiza las operaciones necesarias para obtener un resultado
  */
 public class CalculoOperaciones {
     
+    public static <T> void invierteOrden(PilaADT pila){
+        ArrayList ar = new ArrayList<PilaADT>();
+        
+        while(!pila.isEmpty()){
+            ar.add(pila.pop());
+        }
+        for(int i = 0; i < ar.size(); i++){
+            pila.push(ar.get(i));
+        }
+    }
+    
     public static double calculo(PilaA<String> pila){
         PilaA<Double> num  = new PilaA();
         double aux, aux2, res, conver, resFin = 0;
         String dat;
         
-        /*num.push(2.0);
-        num.push(5.0);
-        num.push(10.0);*/
+        invierteOrden(pila);
         while(!pila.isEmpty()){
             dat = pila.pop();
             switch (dat) {
@@ -47,7 +59,7 @@ public class CalculoOperaciones {
                     num.push(res);
                 break;
             default:
-                num.push(Double.parseDouble(dat)); //Error al ingresar datos
+                num.push(Double.parseDouble(dat)); 
                 break;
             }
         }
