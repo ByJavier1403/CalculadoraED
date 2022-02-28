@@ -2,7 +2,7 @@ package pila_01;
 
 import java.util.ArrayList;
 
-/**@authorTania Ariadna Dominguez Palma
+/**Tania Ariadna Dominguez Palma
  *27/02/2022
  * Clase que realiza las operaciones necesarias para obtener un resultado
  */
@@ -31,31 +31,31 @@ public class CalculoOperaciones {
             case "+":
                     aux = num.pop();
                     aux2 = num.pop();
-                    res = aux + aux2;
+                    res = aux2 + aux;
                     num.push(res);
                 break;
             case "-":
                     aux = num.pop();
                     aux2 = num.pop();
-                    res = aux - aux2;
+                    res = aux2 - aux;
                     num.push(res);
                 break;
             case "*":
                     aux = num.pop();
                     aux2 = num.pop();
-                    res = aux * aux2;
+                    res = aux2 * aux;
                     num.push(res);
                 break;
             case "/":
                     aux = num.pop();
                     aux2 = num.pop();
-                    res = aux / aux2;
+                    res = aux2 / aux;
                     num.push(res);
                 break;
             case "^":
                     aux = num.pop();
                     aux2 = num.pop();
-                    res = Math.pow(aux, aux2);
+                    res = Math.pow(aux2, aux);
                     num.push(res);
                 break;
             default:
