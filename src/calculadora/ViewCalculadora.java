@@ -10,6 +10,8 @@ package calculadora;
  * @author JAV
  */
 public class ViewCalculadora extends javax.swing.JFrame {
+    
+    private String txtOperacion = " ";
 
     /**
      * Creates new form ViewCalculadora
@@ -59,7 +61,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(435, 730));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel1.setText("Resultados");
         jLabel1.setMaximumSize(new java.awt.Dimension(500, 50));
         jLabel1.setMinimumSize(new java.awt.Dimension(500, 50));
         jLabel1.setPreferredSize(new java.awt.Dimension(500, 50));
@@ -84,6 +85,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton2.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton2.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton2.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/multiplicacion.png"))); // NOI18N
         jButton3.setBorderPainted(false);
@@ -92,6 +98,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton3.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton3.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton3.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/borrar.png"))); // NOI18N
         jButton4.setBorderPainted(false);
@@ -100,6 +111,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton4.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton4.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton4.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/siete.png"))); // NOI18N
         jButton5.setBorderPainted(false);
@@ -108,6 +124,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton5.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton5.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton5.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/ocho.png"))); // NOI18N
         jButton6.setBorderPainted(false);
@@ -116,6 +137,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton6.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton6.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton6.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/nueve.png"))); // NOI18N
         jButton7.setBorderPainted(false);
@@ -124,6 +150,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton7.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton7.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton7.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/menos.png"))); // NOI18N
         jButton8.setBorderPainted(false);
@@ -132,6 +163,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton8.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton8.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton8.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/cuatro.png"))); // NOI18N
         jButton9.setBorderPainted(false);
@@ -140,6 +176,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton9.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton9.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton9.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/cinco.png"))); // NOI18N
         jButton10.setBorderPainted(false);
@@ -148,6 +189,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton10.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton10.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton10.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/seis.png"))); // NOI18N
         jButton11.setBorderPainted(false);
@@ -156,6 +202,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton11.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton11.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton11.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/mas.png"))); // NOI18N
         jButton12.setBorderPainted(false);
@@ -164,6 +215,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton12.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton12.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton12.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/uno.png"))); // NOI18N
         jButton13.setBorderPainted(false);
@@ -172,6 +228,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton13.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton13.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton13.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/dos.png"))); // NOI18N
         jButton14.setBorderPainted(false);
@@ -180,6 +241,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton14.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton14.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton14.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/tres.png"))); // NOI18N
         jButton15.setBorderPainted(false);
@@ -188,6 +254,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton15.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton15.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton15.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/igual.png"))); // NOI18N
         jButton16.setBorderPainted(false);
@@ -204,6 +275,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton17.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton17.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton17.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/cero.png"))); // NOI18N
         jButton18.setBorderPainted(false);
@@ -212,6 +288,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton18.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton18.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton18.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/punto.png"))); // NOI18N
         jButton19.setBorderPainted(false);
@@ -220,6 +301,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton19.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton19.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton19.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/apertura.png"))); // NOI18N
         jButton20.setBorderPainted(false);
@@ -228,6 +314,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton20.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton20.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton20.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/cerradura.png"))); // NOI18N
         jButton21.setBorderPainted(false);
@@ -236,6 +327,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton21.setMaximumSize(new java.awt.Dimension(100, 100));
         jButton21.setMinimumSize(new java.awt.Dimension(100, 100));
         jButton21.setPreferredSize(new java.awt.Dimension(100, 100));
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/logo.png"))); // NOI18N
         jButton22.setBorderPainted(false);
@@ -348,9 +444,109 @@ public class ViewCalculadora extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Limpiar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        txtOperacion = "";
+        jLabel1.setText(txtOperacion);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        txtOperacion += "/";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        txtOperacion += "*";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(txtOperacion.length()>=1){
+            String txtAux = (String) txtOperacion.subSequence(0,txtOperacion.length()-1);
+            txtOperacion = txtAux;
+            jLabel1.setText(txtAux);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        txtOperacion += "7";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        txtOperacion += "8";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        txtOperacion += "9";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        txtOperacion += "-";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        txtOperacion += "4";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        txtOperacion += "5";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        txtOperacion += "6";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        txtOperacion += "+";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        txtOperacion += "1";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        txtOperacion += "2";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        txtOperacion += "3";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+       txtOperacion += "0";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        txtOperacion += ".";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        txtOperacion += "(";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        txtOperacion += ")";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        txtOperacion += "(-)";
+        jLabel1.setText(txtOperacion);
+    }//GEN-LAST:event_jButton17ActionPerformed
 
     /**
      * @param args the command line arguments
