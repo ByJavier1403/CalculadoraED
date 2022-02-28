@@ -2,7 +2,7 @@ package pila_01;
 
 import java.util.ArrayList;
 
-/**Tania Ariadna Dominguez Palma
+/**@authorTania Ariadna Dominguez Palma
  *27/02/2022
  * Clase que realiza las operaciones necesarias para obtener un resultado
  */
