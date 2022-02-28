@@ -268,6 +268,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton16.setMaximumSize(new java.awt.Dimension(100, 200));
         jButton16.setMinimumSize(new java.awt.Dimension(100, 200));
         jButton16.setPreferredSize(new java.awt.Dimension(100, 200));
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/cambioSigno.png"))); // NOI18N
         jButton17.setBorderPainted(false);
@@ -445,7 +450,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    boolean segsig = true;
+    boolean segsig = true,isPunto=true;
     
     
     //Limpiar
@@ -453,30 +458,37 @@ public class ViewCalculadora extends javax.swing.JFrame {
         txtOperacion = "";
         jLabel1.setText(txtOperacion);
         segsig = true;
+        isPunto = true;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if (segsig){
+       if (segsig && txtOperacion.length()>=1){
             txtOperacion += "/";
             jLabel1.setText(txtOperacion);
             segsig = false;
+            isPunto = true;
        }
                
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (segsig){
+        if (segsig && txtOperacion.length()>=1){
             txtOperacion += "*";
             jLabel1.setText(txtOperacion);
             segsig = false;
+            isPunto = true;
        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(txtOperacion.charAt(txtOperacion.length()-1)=='.'){
+            isPunto = true;
+        }
         if(txtOperacion.length()>=1){
             String txtAux = (String) txtOperacion.subSequence(0,txtOperacion.length()-1);
             txtOperacion = txtAux;
             jLabel1.setText(txtAux);
+            segsig = true;
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -499,10 +511,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       if (segsig){
-            txtOperacion += "-";
+       if (segsig && txtOperacion.length()>=1){
+           txtOperacion += "-";
             jLabel1.setText(txtOperacion);
             segsig = false;
+            isPunto = true;
        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -525,10 +538,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        if (segsig){
+        if (segsig && txtOperacion.length()>=1){
             txtOperacion += "+";
             jLabel1.setText(txtOperacion);
             segsig = false;
+            isPunto = true;
        }
     }//GEN-LAST:event_jButton12ActionPerformed
 
@@ -557,13 +571,12 @@ public class ViewCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        txtOperacion += ".";
-        jLabel1.setText(txtOperacion);
-        if (segsig){
+        if(isPunto){
             txtOperacion += ".";
             jLabel1.setText(txtOperacion);
-            segsig = false;
-       }
+            segsig = true;
+            isPunto = false;
+        }
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
@@ -583,6 +596,10 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jLabel1.setText(txtOperacion);
         segsig = false;
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
      * @param args the command line arguments
