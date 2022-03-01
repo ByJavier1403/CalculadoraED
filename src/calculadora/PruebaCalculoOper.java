@@ -1,4 +1,4 @@
-package proyect;
+package calculadora;
 /**Clase: PruebaCalculoOper 
  * Prueba distintos casos para los metodos de la clase CalculoOperaciones
  * @version Numero de version: 1
