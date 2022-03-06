@@ -5,6 +5,8 @@
  */
 package calculadora;
 
+import static jdk.nashorn.internal.objects.NativeMath.round;
+
 /**
  *
  * @author JAVIER
@@ -15,7 +17,20 @@ public class Calculadora {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        
+        String prueba = "44+(55-76)*3.2";
+        
+        System.out.println("\n *** -------- ***** \n");
+        PilaA a = new PilaA <>();
+        a = Funciones.separarOperadoresNumeros(prueba);
+        System.out.println(a.toString());
+        System.out.println("\n *** -------- ***** \n");
+        PilaA b = new PilaA <>();
+        b = Funciones.transPostFijaConPila(a);
+        System.out.println(b.toString());
+        double aux = Funciones.calculoFinal(b);
+        System.out.println(aux);
     }
     
 }

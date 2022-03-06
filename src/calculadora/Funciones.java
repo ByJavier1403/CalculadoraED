@@ -5,18 +5,25 @@
  */
 package calculadora;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author JAV
  */
-public class Funciones {    
-        private static boolean revisadorDeParentesis(String formula){
+public class Funciones {
+    
+    //Arreglo de operaciones con el objetivo de optimizar y clarificar el codigo
+    private static String[] operaciones = new String[] {"(",")","+","-","*","/"};
+    private static int[] prioridad =    new int[]  {0, 1,  2, 2, 3, 3};
+    private static final int MAXIMO_OP = 6;
+
+    public static boolean revisadorDeParentesis(String formula){
         PilaA pila = new PilaA ();
         int i = 0;
-        Character cha;
-        boolean resp = true;
-        
-        while (i < formula.length() && resp ){
+        char cha;
+        boolean isBalanceado = true;
+        while (i < formula.length() && isBalanceado ){
             cha = formula.charAt(i);
             if (cha == '(')
                 pila.push('(');
@@ -24,10 +31,210 @@ public class Funciones {
                 if (!pila.isEmpty())
                     pila.pop();
                 else 
-                    resp = false;
+                    isBalanceado = false;
             
             i++;
         }
-        return pila.isEmpty() && resp;         
-    }  
+        return pila.isEmpty() && isBalanceado;
+    } 
+    
+public static PilaA <String> separarOperadoresNumeros(String formula){
+        int i=0,j=0;
+        String cha;
+        String auxiliar = "";
+        //La pila que mandaré como resultado
+        PilaA <String> inf = new PilaA();
+        boolean isPrimero = true,isOperador = false;
+        while(i<formula.length()){
+            cha = String.valueOf(formula.charAt(i));
+            while(j<MAXIMO_OP && !isOperador){
+                if(cha.equals(operaciones[j])){
+                    isOperador = true;
+                    if(auxiliar.length()>=1) {
+                        //Caso del numero
+                        //Añadir a la pila
+                        inf.push(auxiliar);
+                        auxiliar="";
+                    }else{
+                        if(operaciones[j].equals("-") && isPrimero){
+                            isPrimero = false;
+                            //Caso 0-n
+                            //System.out.println("0");
+                            
+                            
+                            //Añadir a la pila un 0
+                            
+                            inf.push("0");
+                        }
+                    }
+                    //Operador
+                    //System.out.println(operaciones[j]);
+                    
+                    //Añadir a la pila el operador
+                    inf.push(operaciones[j]);
+                    
+                }
+                j++;    
+            }
+            if(!isOperador){
+                auxiliar+=cha;
+            }
+            isOperador = false;
+            i++;
+            j=0;
+        }
+        if(auxiliar.length()>=1){  
+            //"Residuo"
+            
+            //System.out.println(auxiliar);
+            
+            
+            //Añadir a la pila lo que quedaba
+            inf.push(auxiliar);
+        }
+        
+        intercambiaElem(inf);
+        
+        
+        //AQUI PONER EL RETURN DE MI PILA INF
+        return inf;
+    }
+
+    private static <T> int buscaSecuencial (T [] arre, int tE, T dato) {
+		int i;
+		i = 0;
+		while ( i <tE && !(arre[i].equals(dato))) 
+			i++;
+		
+		if (i == tE)
+			i = -1;
+		
+		return i;
+    }
+    
+        private static <T> int elementosPila (PilaADT pila){
+        PilaA alterna = new PilaA <>();
+        int res = 0;
+        boolean aux = true;
+        
+        while (aux){
+            try{
+                alterna.push(pila.pop());
+                res++;
+            }catch(Exception e){
+                aux = false;
+            }
+        }
+        
+        
+        for (int i = 0; i < res; i++){
+            pila.push(alterna.pop());
+        }
+        
+        return res;
+    }
+    
+    //Invertir
+    private static <T> void intercambiaElem (PilaADT pila) {
+        int numE;
+        ArrayList a = new ArrayList();
+        numE = elementosPila(pila);
+        for (int i = 0; i < numE; i++){
+            a.add(pila.pop());
+        }
+        for (int j = 0; j < numE; j++){
+            pila.push(a.get(j));
+        }
+    }
+    
+    
+    public static PilaA<String> transPostFijaConPila (PilaA<String> operacion) {    
+        PilaA <String> post = new PilaA(); //Guardar postFija
+        PilaA <String> operadores = new PilaA <>(); //Guardar los operadores +-/*()
+        String dato; //Guardas el top de la pila
+        int pos; //Valor que ocupa el elemento en el priority queue
+        int p1; //Definir la prioridad del elemento evaluado
+        int p2; //Definir la prioridad del elemento en la pila
+        int i = 0;
+        boolean isPrimero = true; //Ayudar para saber si es la primer operacion que agregamos
+        
+        while (!operacion.isEmpty()){
+            dato = operacion.pop();
+            pos = buscaSecuencial(operaciones, MAXIMO_OP, dato);
+            if (pos == -1) {
+                post.push(dato);
+            }
+            else {
+                switch (prioridad[pos]){
+                    case 0: //Parentesis "("                        
+                        operadores.push(dato);
+                        break;
+                    case 1: //Parentesis ")"
+                        while (!operadores.peek().equals("(")){                                                    
+                            post.push(String.valueOf(operadores.pop()));
+                        }
+                        operadores.pop(); 
+                        break;
+                    default:
+                        if(isPrimero){
+                            isPrimero = false;
+                            operadores.push(dato);
+                        }else{
+                            p2 = buscaSecuencial (operaciones, MAXIMO_OP, operadores.peek());
+                            while (!operadores.isEmpty() && (prioridad[pos] <= prioridad[p2])){                                                      
+                                post.push(operadores.pop());
+                            }
+                            operadores.push(dato);
+                        }
+                        break;
+                }
+            } 
+        }
+        while (!operadores.isEmpty()){
+            post.push(operadores.pop());
+        }
+        return post;
+    }
+    
+        public static double calculoFinal(PilaA<String> pila){
+        PilaA<Double> num  = new PilaA();
+        double aux, aux2, res, resFin = 0;
+        String dat;
+        
+        intercambiaElem(pila);
+        while(!pila.isEmpty()){
+            dat = pila.pop();
+            switch (dat) {
+            case "+":
+                    aux = num.pop();
+                    aux2 = num.pop();
+                    res = (double) aux2 + aux;
+                    num.push(res);
+                break;
+            case "-":
+                    aux = num.pop();
+                    aux2 = num.pop();
+                    res = (double) aux2 - aux;
+                    num.push(res);
+                break;
+            case "*":
+                    aux = num.pop();
+                    aux2 = num.pop();
+                    res = (double) aux2 * aux;
+                    num.push(res);
+                break;
+            case "/":
+                    aux = num.pop();
+                    aux2 = num.pop();
+                    res = (double) aux2 / aux;
+                    num.push(res);
+                break;
+            default:
+                num.push(Double.parseDouble(dat)); 
+                break;
+            }
+        }
+        resFin = num.pop();
+        return resFin;
+    }
 }
