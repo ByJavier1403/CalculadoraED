@@ -6,13 +6,15 @@
  */
 package calculadora;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author JAV
  */
 public class ViewCalculadora extends javax.swing.JFrame {
     
-    private String txtOperacion = " ";
+    private String txtFormula = " ";
 
     /**
      * Creates new form ViewCalculadora
@@ -449,156 +451,192 @@ public class ViewCalculadora extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    boolean segsig = true,isPunto=true;
-    
+    boolean isOperacion = false,isPunto=false;   
     
     //Limpiar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        txtOperacion = "";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
-        isPunto = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula = "";
+        jLabel1.setText(txtFormula);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //Division
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if (segsig && txtOperacion.length()>=1){
-            txtOperacion += "/";
-            jLabel1.setText(txtOperacion);
-            segsig = false;
-            isPunto = true;
-       }
-               
+        if(txtFormula.length()>1 && !isOperacion){
+            isOperacion = true;
+            isPunto = false;
+            txtFormula+='/';
+            jLabel1.setText(txtFormula);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //Multiplicacion
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (segsig && txtOperacion.length()>=1){
-            txtOperacion += "*";
-            jLabel1.setText(txtOperacion);
-            segsig = false;
-            isPunto = true;
-       }
+        if(txtFormula.length()>1 && !isOperacion){
+            isOperacion = true;
+            isPunto = false;
+            txtFormula+='*';
+            jLabel1.setText(txtFormula);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //Borrar
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if(txtOperacion.charAt(txtOperacion.length()-1)=='.'){
-            isPunto = true;
-        }
-        if(txtOperacion.length()>=1){
-            String txtAux = (String) txtOperacion.subSequence(0,txtOperacion.length()-1);
-            txtOperacion = txtAux;
-            jLabel1.setText(txtAux);
-            segsig = true;
+        if(txtFormula.length()>=1){
+            if(isPunto){
+                isPunto = false;
+            }else if(isOperacion){
+                isOperacion = false;
+            }
+            txtFormula = txtFormula.substring(0, txtFormula.length()-1);
+            jLabel1.setText(txtFormula);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    //Siete
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        txtOperacion += "7";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='7';
+        jLabel1.setText(txtFormula);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    //Ocho
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        txtOperacion += "8";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='8';
+        jLabel1.setText(txtFormula);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    //Nueve
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        txtOperacion += "9";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='9';
+        jLabel1.setText(txtFormula); 
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    //Menos
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       if (segsig && txtOperacion.length()>=1){
-           txtOperacion += "-";
-            jLabel1.setText(txtOperacion);
-            segsig = false;
-            isPunto = true;
-       }
+        if(!isOperacion){
+            isOperacion = true;
+            isPunto = false;
+            txtFormula+='-';
+            jLabel1.setText(txtFormula);
+        }      
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    //Cuatro
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        txtOperacion += "4";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='4';
+        jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    //Cinco
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        txtOperacion += "5";
-        jLabel1.setText(txtOperacion);
-        segsig = false;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='5';
+        jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    //Seis
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        txtOperacion += "6";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='6';
+        jLabel1.setText(txtFormula);        
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    //Mas
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        if (segsig && txtOperacion.length()>=1){
-            txtOperacion += "+";
-            jLabel1.setText(txtOperacion);
-            segsig = false;
-            isPunto = true;
-       }
+        if(txtFormula.length()>1 && !isOperacion){
+            isOperacion = true;
+            isPunto = false;
+            txtFormula+='+';
+            jLabel1.setText(txtFormula);
+        }      
     }//GEN-LAST:event_jButton12ActionPerformed
 
+    //Uno
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        txtOperacion += "1";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='1';
+        jLabel1.setText(txtFormula);        
     }//GEN-LAST:event_jButton13ActionPerformed
 
+    //Dos
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        txtOperacion += "2";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='2';
+        jLabel1.setText(txtFormula);        
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    //Tres
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        txtOperacion += "3";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='3';
+        jLabel1.setText(txtFormula);   
     }//GEN-LAST:event_jButton15ActionPerformed
 
+    //Cero
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-       txtOperacion += "0";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='0';
+        jLabel1.setText(txtFormula);      
     }//GEN-LAST:event_jButton18ActionPerformed
 
+    //Punto
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        if(isPunto){
-            txtOperacion += ".";
-            jLabel1.setText(txtOperacion);
-            segsig = true;
-            isPunto = false;
-        }
+        if(txtFormula.length()>1 && !isPunto){
+            isOperacion = false;
+            isPunto = true;
+            txtFormula+='.';
+            jLabel1.setText(txtFormula);
+        }        
     }//GEN-LAST:event_jButton19ActionPerformed
 
+    //Apertura
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        txtOperacion += "(";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+='(';
+        jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton20ActionPerformed
 
+    //Cerradura
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        txtOperacion += ")";
-        jLabel1.setText(txtOperacion);
-        segsig = true;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+=')';
+        jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton21ActionPerformed
 
+    //Mas/Menos
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        txtOperacion += "(-)";
-        jLabel1.setText(txtOperacion);
-        segsig = false;
+        isOperacion = false;
+        isPunto = false;
+        txtFormula+="(-)";
+        jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton17ActionPerformed
 
+    //Igual
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
+        if(Funciones.revisadorDeParentesis(txtFormula)){
+            PilaA<String> formulaSeparada = Funciones.separarOperadoresNumeros(txtFormula);
+            formulaSeparada = Funciones.transPostFijaConPila(formulaSeparada);
+            double resultado = (double) Funciones.calculoFinal(formulaSeparada);
+            DecimalFormat formato1 = new DecimalFormat("#.00000");
+            jLabel1.setText(formato1.format(resultado));
+        }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
