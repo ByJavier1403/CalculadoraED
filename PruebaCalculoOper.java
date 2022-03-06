@@ -1,5 +1,5 @@
 package pila_01;
-/**@authorTania Ariadna Dominguez Palma
+/**@author Tania Ariadna Dominguez Palma
  *27/02/2022
  *Clase que prueba la clase CalculoOperaciones
  */
@@ -14,7 +14,7 @@ public class PruebaCalculoOper {
         PilaA num = new PilaA();
         
         cad.push("3");
-        cad.push("4");
+        cad.push("4");                                                                                            
         cad.push("-");
         //cad.push("-48.25");
         //cad.push("5");
