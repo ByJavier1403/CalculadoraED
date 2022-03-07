@@ -10,14 +10,14 @@ import java.text.DecimalFormat;
 
 /**
  *
- * @author JAV
+ * @author Equipo 1
  */
 public class ViewCalculadora extends javax.swing.JFrame {
     
     private String txtFormula = " ";
 
     /**
-     * Creates new form ViewCalculadora
+     * Interfaz gráfica y validación de la expresión
      */
     public ViewCalculadora() {
         initComponents();
@@ -634,13 +634,20 @@ public class ViewCalculadora extends javax.swing.JFrame {
             PilaA<String> formulaSeparada = Funciones.separarOperadoresNumeros(txtFormula);
             formulaSeparada = Funciones.transPostFijaConPila(formulaSeparada);
             double resultado = (double) Funciones.calculoFinal(formulaSeparada);
+            if(Math.abs(resultado)==0){
+                resultado = 0;
+            }
             DecimalFormat formato1 = new DecimalFormat("#.00000");
             jLabel1.setText(formato1.format(resultado));
+        }else{
+            jLabel1.setText("ERROR");
         }
+
     }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Al correrse, genera la GUI y llama a la acción con el signo de igual.
+     * Además, comprueba la validez de los datos ingresados usando métodos privados. 
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

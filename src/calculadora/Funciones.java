@@ -9,15 +9,22 @@ import java.util.ArrayList;
 
 /**
  *
- * @author JAV
+ * @author Equipo 1
  */
 public class Funciones {
     
-    //Arreglo de operaciones con el objetivo de optimizar y clarificar el codigo
+    //Arreglo de operaciones con el objetivo de optimizar y clarificar el código
     private static String[] operaciones = new String[] {"(",")","+","-","*","/"};
     private static int[] prioridad =    new int[]  {0, 1,  2, 2, 3, 3};
     private static final int MAXIMO_OP = 6;
 
+    /**
+     * Revisa que los paréntesis de una expresión estén bien balanceados.
+     * Usando una pila auxiliar, determina si cada paréntesis izquierdo se corresponde 
+     * con uno derecho.
+     * @param formula representa la expresión a revisar.
+     * @return devuelve un verdadero o un falso.
+     */
     public static boolean revisadorDeParentesis(String formula){
         PilaA pila = new PilaA ();
         int i = 0;
@@ -38,6 +45,12 @@ public class Funciones {
         return pila.isEmpty() && isBalanceado;
     } 
     
+    /**
+     * Auxiliar. Convierte la cadena que introduce el usuario a una pila.
+     * Conserva el orden, separando los operadores de los números.
+     * @param formula representa la cadena proporcionada por el usuario.
+     * @return regresa una pila con los caractéres separados.
+     */ 
 public static PilaA <String> separarOperadoresNumeros(String formula){
         int i=0,j=0;
         String cha;
@@ -147,7 +160,13 @@ public static PilaA <String> separarOperadoresNumeros(String formula){
         }
     }
     
-    
+    /**
+     * Reescribe una expresión usando la notación postfija.
+     * Usando condicionales tanto simples como múltiples, identifica la prioridad de cada operador
+     * y sus correspondientes cifras para luego acomodarlos en la pila que va a devolver.
+     * @param operacion recibe una pila con los datos en el orden en el que los insertó el usuario.
+     * @return devuelve una pila con la operación reorganizada, respetando la jerarquía de operaciones.
+     */
     public static PilaA<String> transPostFijaConPila (PilaA<String> operacion) {    
         PilaA <String> post = new PilaA(); //Guardar postFija
         PilaA <String> operadores = new PilaA <>(); //Guardar los operadores +-/*()
@@ -196,7 +215,14 @@ public static PilaA <String> separarOperadoresNumeros(String formula){
         return post;
     }
     
-        public static double calculoFinal(PilaA<String> pila){
+    /**
+     * Evalúa la operación y encuentra el resultado que se le devuelve al usuario.
+     * Después de invertir la pila que recibe, usa un condicional múltiple dentro de un 
+     * ciclo tipo while para identificar cada operador y evaluarlo correspondientemente.
+     * @param pila recibe una pila con la expresión escrita en notación postfija
+     * @return arroja un valor con decimales: el resultado final del proceso
+     */
+    public static double calculoFinal(PilaA<String> pila){
         PilaA<Double> num  = new PilaA();
         double aux, aux2, res, resFin = 0;
         String dat;
