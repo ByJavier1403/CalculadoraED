@@ -9,7 +9,8 @@ package calculadora;
 import java.text.DecimalFormat;
 
 /**
- *
+ * Esta clase se encarga de la interfaz gráfica y de la primera parte de la evaluación de la expresión.
+ * 
  * @author Equipo 1
  */
 public class ViewCalculadora extends javax.swing.JFrame {
@@ -49,7 +50,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
@@ -276,19 +276,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
             }
         });
 
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/cambioSigno.png"))); // NOI18N
-        jButton17.setBorderPainted(false);
-        jButton17.setContentAreaFilled(false);
-        jButton17.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/limpiar.png"))); // NOI18N
-        jButton17.setMaximumSize(new java.awt.Dimension(100, 100));
-        jButton17.setMinimumSize(new java.awt.Dimension(100, 100));
-        jButton17.setPreferredSize(new java.awt.Dimension(100, 100));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
-            }
-        });
-
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/cero.png"))); // NOI18N
         jButton18.setBorderPainted(false);
         jButton18.setContentAreaFilled(false);
@@ -381,8 +368,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(106, 106, 106)
                                 .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -438,8 +424,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
                         .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(106, 106, 106))
                     .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,7 +446,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jLabel1.setText(txtFormula);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    //Division
+    //División
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(txtFormula.length()>1 && !isOperacion){
             isOperacion = true;
@@ -471,7 +456,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    //Multiplicacion
+    //Multiplicación
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(txtFormula.length()>1 && !isOperacion){
             isOperacion = true;
@@ -552,7 +537,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jLabel1.setText(txtFormula);        
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    //Mas
+    //Más
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         if(txtFormula.length()>1 && !isOperacion){
             isOperacion = true;
@@ -620,14 +605,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
         jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton21ActionPerformed
 
-    //Mas/Menos
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        isOperacion = false;
-        isPunto = false;
-        txtFormula+="(-)";
-        jLabel1.setText(txtFormula);         
-    }//GEN-LAST:event_jButton17ActionPerformed
-
     //Igual
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         if(Funciones.revisadorDeParentesis(txtFormula)){
@@ -690,7 +667,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
