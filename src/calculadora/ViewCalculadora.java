@@ -6,6 +6,7 @@
  */
 package calculadora;
 
+import static java.lang.Math.abs;
 import java.text.DecimalFormat;
 
 /**
@@ -634,8 +635,13 @@ public class ViewCalculadora extends javax.swing.JFrame {
             PilaA<String> formulaSeparada = Funciones.separarOperadoresNumeros(txtFormula);
             formulaSeparada = Funciones.transPostFijaConPila(formulaSeparada);
             double resultado = (double) Funciones.calculoFinal(formulaSeparada);
+            if(abs(resultado)==0){
+                resultado = 0;
+            }
             DecimalFormat formato1 = new DecimalFormat("#.00000");
             jLabel1.setText(formato1.format(resultado));
+        }else{
+            jLabel1.setText("ERROR");
         }
     }//GEN-LAST:event_jButton16ActionPerformed
 
