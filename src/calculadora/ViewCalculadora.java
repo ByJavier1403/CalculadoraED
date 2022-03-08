@@ -615,19 +615,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
 
     //Igual
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-<<<<<<< HEAD
-        if(Funciones.revisadorDeParentesis(txtFormula)){
-            PilaA<String> formulaSeparada = Funciones.separarOperadoresNumeros(txtFormula);
-            formulaSeparada = Funciones.transPostFijaConPila(formulaSeparada);
-            double resultado = (double) Funciones.calculoFinal(formulaSeparada);
-            if(abs(resultado)==0){
-                resultado = 0;
-            }
-            DecimalFormat formato1 = new DecimalFormat("#.00000");
-            jLabel1.setText(formato1.format(resultado));
-        }else{
-            jLabel1.setText("ERROR");
-=======
         try{
             if(Funciones.revisadorDeParentesis(txtFormula)){
                 PilaA<String> formulaSeparada = Funciones.separarOperadoresNumeros(txtFormula);
@@ -643,7 +630,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
             }
         } catch (Exception e){
                 jLabel1.setText("ERROR");
->>>>>>> Cambios
         }
     }//GEN-LAST:event_jButton16ActionPerformed
 
