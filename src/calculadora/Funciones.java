@@ -8,16 +8,25 @@ package calculadora;
 import java.util.ArrayList;
 
 /**
- *
- * @author JAV
+ * Esta clase se encarga de la segunda parte de la verificación, reescritura y evaluación de la expresión.
+ * 
+ * @author Equipo 1
  */
 public class Funciones {
     
-    //Arreglo de operaciones con el objetivo de optimizar y clarificar el codigo
+    //Arreglo de operaciones con el objetivo de optimizar y clarificar el código
     private static String[] operaciones = new String[] {"(",")","+","-","*","/"};
     private static int[] prioridad =    new int[]  {0, 1,  2, 2, 3, 3};
     private static final int MAXIMO_OP = 6;
 
+    /**
+     * Revisa que los paréntesis de una expresión estén bien balanceados.
+     * 
+     * Usando una pila auxiliar, determina si cada paréntesis izquierdo se corresponde con uno derecho.
+     * 
+     * @param formula representa la expresión a revisar.
+     * @return devuelve un verdadero o un falso.
+     */
     public static boolean revisadorDeParentesis(String formula){
         PilaA pila = new PilaA ();
         int i = 0;
@@ -38,6 +47,14 @@ public class Funciones {
         return pila.isEmpty() && isBalanceado;
     } 
     
+    /**
+     * Auxiliar. Convierte a una pila la cadena que introduce el usuario.
+     * 
+     * Conserva el orden, separando los operadores de los números.
+     * 
+     * @param formula representa la cadena proporcionada por el usuario.
+     * @return regresa una pila con los caractéres separados.
+     */ 
 public static PilaA <String> separarOperadoresNumeros(String formula){
         int i=0,j=0;
         String cha;
@@ -51,7 +68,7 @@ public static PilaA <String> separarOperadoresNumeros(String formula){
                 if(cha.equals(operaciones[j])){
                     isOperador = true;
                     if(auxiliar.length()>=1) {
-                        //Caso del numero
+                        //Caso del número
                         //Añadir a la pila
                         inf.push(auxiliar);
                         auxiliar="";
@@ -96,7 +113,7 @@ public static PilaA <String> separarOperadoresNumeros(String formula){
         intercambiaElem(inf);
         
         
-        //AQUI PONER EL RETURN DE MI PILA INF
+        //AQUÍ PONER EL RETURN DE MI PILA INF
         return inf;
     }
 
@@ -147,16 +164,23 @@ public static PilaA <String> separarOperadoresNumeros(String formula){
         }
     }
     
-    
+    /**
+     * Reescribe una expresión usando la notación postfija.
+     *
+     * Usando condicionales tanto simples como múltiples, identifica la prioridad de cada operador y sus correspondientes cifras, para luego acomodarlos en la pila que va a devolver.
+     * 
+     * @param operacion recibe una pila con los datos en el orden en el que los insertó el usuario.
+     * @return devuelve una pila con la operación reorganizada, respetando la jerarquía de operaciones.
+     */
     public static PilaA<String> transPostFijaConPila (PilaA<String> operacion) {    
-        PilaA <String> post = new PilaA(); //Guardar postFija
+        PilaA <String> post = new PilaA(); //Guardar postfija
         PilaA <String> operadores = new PilaA <>(); //Guardar los operadores +-/*()
-        String dato; //Guardas el top de la pila
+        String dato; //Guardar el tope de la pila
         int pos; //Valor que ocupa el elemento en el priority queue
         int p1; //Definir la prioridad del elemento evaluado
         int p2; //Definir la prioridad del elemento en la pila
         int i = 0;
-        boolean isPrimero = true; //Ayudar para saber si es la primer operacion que agregamos
+        boolean isPrimero = true; //Ayuda para saber si es la primer operación que agregamos
         
         while (!operacion.isEmpty()){
             dato = operacion.pop();
@@ -166,10 +190,10 @@ public static PilaA <String> separarOperadoresNumeros(String formula){
             }
             else {
                 switch (prioridad[pos]){
-                    case 0: //Parentesis "("                        
+                    case 0: //Paréntesis "("                        
                         operadores.push(dato);
                         break;
-                    case 1: //Parentesis ")"
+                    case 1: //Paréntesis ")"
                         while (!operadores.peek().equals("(")){                                                    
                             post.push(String.valueOf(operadores.pop()));
                         }
@@ -196,7 +220,15 @@ public static PilaA <String> separarOperadoresNumeros(String formula){
         return post;
     }
     
-        public static double calculoFinal(PilaA<String> pila){
+    /**
+     * Evalúa la operación y encuentra el resultado que se le devuelve al usuario.
+     * 
+     * Después de invertir la pila que recibe, usa un condicional múltiple dentro de un ciclo tipo while para identificar cada operador y evaluarlo correspondientemente.
+     * 
+     * @param pila recibe una pila con la expresión escrita en notación postfija.
+     * @return arroja un valor con decimales: el resultado final del proceso.
+     */
+    public static double calculoFinal(PilaA<String> pila){
         PilaA<Double> num  = new PilaA();
         double aux, aux2, res, resFin = 0;
         String dat;
