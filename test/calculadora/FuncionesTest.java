@@ -42,12 +42,12 @@ public class FuncionesTest {
     @Test
     public void testRevisadorDeParentesis() {
         System.out.println("revisadorDeParentesis");
-        String formula = "";
-        boolean expResult = false;
+        String formula = "()";
+        boolean expResult = true;
         boolean result = Funciones.revisadorDeParentesis(formula);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
