@@ -436,12 +436,13 @@ public class ViewCalculadora extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    boolean isOperacion = false,isPunto=false;   
+    boolean isOperacion = false, isPunto = false, isInicio = true;   
     
     //Limpiar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         isOperacion = false;
         isPunto = false;
+        isInicio = true;
         txtFormula = "";
         jLabel1.setText(txtFormula);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -482,7 +483,6 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Siete
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         isOperacion = false;
-        isPunto = false;
         txtFormula+='7';
         jLabel1.setText(txtFormula);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -490,7 +490,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Ocho
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='8';
         jLabel1.setText(txtFormula);
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -498,7 +498,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Nueve
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='9';
         jLabel1.setText(txtFormula); 
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -516,7 +516,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Cuatro
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='4';
         jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -524,7 +524,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Cinco
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='5';
         jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -532,7 +532,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Seis
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='6';
         jLabel1.setText(txtFormula);        
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -550,7 +550,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Uno
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='1';
         jLabel1.setText(txtFormula);        
     }//GEN-LAST:event_jButton13ActionPerformed
@@ -558,7 +558,7 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Dos
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='2';
         jLabel1.setText(txtFormula);        
     }//GEN-LAST:event_jButton14ActionPerformed
@@ -566,15 +566,21 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Tres
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+='3';
         jLabel1.setText(txtFormula);   
     }//GEN-LAST:event_jButton15ActionPerformed
 
     //Cero
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        if (isOperacion || isInicio){
+            isPunto = false;
+            isInicio = false;
+        }
+        else
+            if(!isInicio)
+                isPunto = true;
         isOperacion = false;
-        isPunto = false;
         txtFormula+='0';
         jLabel1.setText(txtFormula);      
     }//GEN-LAST:event_jButton18ActionPerformed
@@ -583,10 +589,11 @@ public class ViewCalculadora extends javax.swing.JFrame {
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         if(txtFormula.length()>1 && !isPunto){
             isOperacion = false;
-            isPunto = true;
             txtFormula+='.';
             jLabel1.setText(txtFormula);
+            isPunto = true;
         }        
+        
     }//GEN-LAST:event_jButton19ActionPerformed
 
     //Apertura
@@ -600,26 +607,29 @@ public class ViewCalculadora extends javax.swing.JFrame {
     //Cerradura
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         isOperacion = false;
-        isPunto = false;
+        //isPunto = false;
         txtFormula+=')';
         jLabel1.setText(txtFormula);         
     }//GEN-LAST:event_jButton21ActionPerformed
 
     //Igual
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        if(Funciones.revisadorDeParentesis(txtFormula)){
-            PilaA<String> formulaSeparada = Funciones.separarOperadoresNumeros(txtFormula);
-            formulaSeparada = Funciones.transPostFijaConPila(formulaSeparada);
-            double resultado = (double) Funciones.calculoFinal(formulaSeparada);
-            if(Math.abs(resultado)==0){
-                resultado = 0;
+        try{
+            if(Funciones.revisadorDeParentesis(txtFormula)){
+                PilaA<String> formulaSeparada = Funciones.separarOperadoresNumeros(txtFormula);
+                formulaSeparada = Funciones.transPostFijaConPila(formulaSeparada);
+                double resultado = (double) Funciones.calculoFinal(formulaSeparada);
+                if(Math.abs(resultado)==0){
+                    resultado = 0;
+                }
+                DecimalFormat formato1 = new DecimalFormat("#.00000");
+                jLabel1.setText(formato1.format(resultado));
+            }else{
+                jLabel1.setText("ERROR");
             }
-            DecimalFormat formato1 = new DecimalFormat("#.00000");
-            jLabel1.setText(formato1.format(resultado));
-        }else{
-            jLabel1.setText("ERROR");
+        } catch (Exception e){
+                jLabel1.setText("ERROR");
         }
-
     }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
